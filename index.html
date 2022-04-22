@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Date</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./css/nullstyle.css">
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="container">
+			<div class="item">
+				<label for="year">Год</label>
+				<input type="number" name="year" id="year" min="1970" max="2022">
+			</div>
+			<div class="item">
+				<label for="month">Месяц</label>
+				<input type="number" name="month" id="month" min="1" max="12">
+			</div>
+			<div class="item">
+				<label for="day">День</label>
+				<input type="number" name="day" id="day" min="1" max="31">
+			</div>
+			<div class="item">
+				<label for="hour">Час</label>
+				<input type="number" name="hour" id="hour" min="0" max="23">
+			</div>
+			<div class="item">
+				<label for="minute">Минута</label>
+				<input type="number" name="minute" id="minute" min="0" max="59">
+			</div>
+			<button type="button">Когда это было</button>
+		</div>
+		<div class="result"></div>
+	</div>
+	<script src="./script.js"></script>
+</body>
+
+</html>
