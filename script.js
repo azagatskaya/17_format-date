@@ -6,7 +6,8 @@ const colors = {
 	],
 	elemBg: ['#4c4c51', '#fff'],
 	borderCol: ['grey', 'lightgrey'],
-	textCol: ['whitesmoke', 'slategray'],
+	textCol: ['whitesmoke', 'inherit'],
+	themeTextCol: ['whitesmoke', 'slategray'],
 	btnBg: ['rgb(94, 158, 255)', 'linear-gradient(to bottom, #8fc400 0%,#8fc400 100%)']
 }
 
@@ -35,7 +36,7 @@ function getFullDate() {
 	return new Date(getInputValue('#year'), getInputValue('#month') - 1, getInputValue('#day'), getInputValue('#hour'), getInputValue('#minute'));
 }
 
-document.querySelector('button').addEventListener('click', compareDates);
+document.querySelector('.btn__format').addEventListener('click', compareDates);
 
 function compareDates() {
 	formatDate(getFullDate());
@@ -75,10 +76,12 @@ function changeTheme(theme) {
 	let i;
 	(theme === 'dark') ? i = 0: (theme === 'light') ? i = 1 : console.log("Theme doesn't exist");
 	setBackground(getElement('.wrapper'), colors.wrapBg[i]);
-	setBackground(getElements('.item > input, .sub-menu__link'), colors.elemBg[i]);
-	setBorderColor(getElements('.item > input '), colors.borderCol[i]);
-	setColor(getElements('.item > input, .item > label, .theme__img, .menu__link, .sub-menu__link, .result'), colors.textCol[i]);
+	setBackground(getElements('.item > input, .sub-menu__link, .rand-gen__data'), colors.elemBg[i]);
+	setBorderColor(getElements('.item > input, .rand-gen__data, .sub-menu__link'), colors.borderCol[i]);
+	setColor(getElements('.item > label, .theme__img, .menu__link, .sub-menu__link'), colors.themeTextCol[i]);
+	setColor(getElements('.item > input, .result'), colors.textCol[i]);
 	setBackground(getElement('.btn__format'), colors.btnBg[i]);
+	setBackground(getElement('.rand-gen__btn'), colors.btnBg[i]);
 	hideElement(getThemeMenu());
 }
 
@@ -134,4 +137,41 @@ function showElement(element) {
 
 function hideElement(element) {
 	element.style.display = 'none';
+}
+
+// ---------------------- Random Generator ------------------
+
+document.querySelector('.rand-gen__btn').addEventListener('click', genAndCalc);
+
+
+function genAndCalc() {
+	const arr = generateRandomNumbers();
+	printNumbers(arr);
+	calculate(arr);
+}
+
+function generateRandomNumbers() {
+	let randomArr = [];
+	for (let i = 0; i < 10; i++) {
+		let randNum = Math.round(Math.random() * (10 - (-10)) + (-10));
+		randomArr.push(randNum);
+	}
+	return randomArr;
+}
+
+function printNumbers(arr) {
+	document.querySelector('.rand-gen__data').innerText = arr.toString();
+}
+
+function calculate(arr) {
+	const min = Math.min(...arr);
+	const max = Math.max(...arr);
+	const round = Math.round(...arr);
+	const sum = arr.reduce((a, b) => {
+		return a + b;
+	});
+	const mult = arr.reduce((a, b) => {
+		return a * b;
+	});
+	document.querySelector('.rand-gen__results').innerText = `Минимальное: ${min}\nМаксимальное: ${max}\nСреднее арифметическое: ${round}\nСумма чисел: ${sum}\nПроизведение чисел: ${mult}`;
 }
