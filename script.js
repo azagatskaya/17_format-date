@@ -1,6 +1,7 @@
 'use strict';
 
 const colors = {
+	icon: ['fa-moon', 'fa-sun'],
 	wrapBg: ['linear-gradient(to bottom, #45484d 0%, #000000 100%)',
 		'linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%)'
 	],
@@ -75,6 +76,7 @@ document.querySelector('.sub-menu__link--light').addEventListener('click', () =>
 function changeTheme(theme) {
 	let i;
 	(theme === 'dark') ? i = 0: (theme === 'light') ? i = 1 : console.log("Theme doesn't exist");
+	setThemeIcon(getElement('.theme__img'), colors.icon[i]);
 	setBackground(getElement('.wrapper'), colors.wrapBg[i]);
 	setBackground(getElements('.item > input, .sub-menu__link, .rand-gen__data'), colors.elemBg[i]);
 	setBorderColor(getElements('.item > input, .rand-gen__data, .sub-menu__link'), colors.borderCol[i]);
@@ -99,6 +101,15 @@ function getThemeCard() {
 
 function getThemeMenu() {
 	return document.querySelector('.sub-menu__list');
+}
+
+function setThemeIcon(element, icon) {
+	if (icon === 'fa-sun') {
+		element.classList.remove('fa-moon');
+	} else {
+		element.classList.remove('fa-sun');
+	}
+	element.classList.add(icon);
 }
 
 function setBackground(element, color) {

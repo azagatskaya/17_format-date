@@ -128,3 +128,17 @@
 	height: 200px;
 	text-align: left;
 }
+.slide-in-top {
+	animation: slide-in-top 0.4s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
