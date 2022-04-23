@@ -8,14 +8,42 @@
 	<title>Date</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./css/nullstyle.css">
 	<link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 	<div class="wrapper">
+		<header class="header">
+			<nav class="menu">
+				<ul class="menu__list">
+					<li>
+						<a href="#" class="theme menu__link">
+							<i class="theme__img fa fa-sun fa-lg"></i>
+							<div>Тема</div>
+						</a>
+						<ul class="sub-menu__list">
+							<li>
+								<a href="#" class="theme sub-menu__link sub-menu__link--light">
+									<i class="theme__img fa fa-sun fa-lg"></i>
+									<div>Светлая</div>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="theme sub-menu__link sub-menu__link--dark">
+									<i class="theme__img fa fa-moon fa-lg"></i>
+									<div>Темная</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+				</ul>
+			</nav>
+		</header>
 		<div class="container">
+
 			<div class="item">
 				<label for="year">Год</label>
 				<input type="number" name="year" id="year" min="1970" max="2022">
@@ -36,10 +64,15 @@
 				<label for="minute">Минута</label>
 				<input type="number" name="minute" id="minute" min="0" max="59">
 			</div>
-			<button type="button">Когда это было</button>
+
+			<button class="btn__format" type="button">Когда это было</button>
+
 		</div>
 		<div class="result"></div>
 	</div>
+
+
+	<script src="https://kit.fontawesome.com/e6f7138599.js" crossorigin="anonymous"></script>
 	<script src="./script.js"></script>
 </body>
 
